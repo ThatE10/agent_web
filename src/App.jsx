@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import ASCIIText from './ASCIIText';
 import mapImage from '../map.png';
 
@@ -34,11 +35,10 @@ function App() {
   }, []);
 
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0.2, zIndex: 1, pointerEvents: 'none' }}>
-        <img src={mapImage} alt="Map" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-      </div>
-      <div style={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100vw', height: '100vh', backgroundColor: '#1a1a1a', overflow: 'hidden' }}>
+      
+      {/* Header section explicitly for the countdown */}
+      <div style={{ height: '25vh', width: '100%', position: 'relative', zIndex: 10, background: 'linear-gradient(to bottom, #111 0%, #1a1a1a 100%)', borderBottom: '1px solid #333', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}>
         {timeLeft && (
           <ASCIIText
             text={timeLeft}
@@ -50,6 +50,16 @@ function App() {
           />
         )}
       </div>
+
+      {/* Interactive Map area */}
+      <div style={{ flex: 1, position: 'relative', width: '100%', overflow: 'hidden', cursor: 'grab' }}>
+        <TransformWrapper centerOnInit={true} initialScale={1} minScale={0.5} maxScale={8}>
+          <TransformComponent wrapperStyle={{ width: '100%', height: '100%' }} contentStyle={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <img src={mapImage} alt="Map" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} draggable={false} />
+          </TransformComponent>
+        </TransformWrapper>
+      </div>
+
     </div>
   );
 }
