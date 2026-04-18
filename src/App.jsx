@@ -60,6 +60,32 @@ function App() {
         </TransformWrapper>
       </div>
 
+      {/* Invite Button Overlay */}
+      <a 
+        href="https://partiful.com/e/aX7b9vls5ZJHSMLjoJQk" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style={{
+          position: 'absolute',
+          bottom: '30px',
+          right: '30px',
+          zIndex: 20,
+          background: 'linear-gradient(135deg, #ff6188, #fc9867)',
+          color: '#fff',
+          padding: '15px 30px',
+          borderRadius: '50px',
+          textDecoration: 'none',
+          fontWeight: 'bold',
+          fontSize: '1.2rem',
+          boxShadow: '0 4px 15px rgba(255, 97, 136, 0.4)',
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+          fontFamily: 'sans-serif'
+        }}
+      >
+        Invite & Coords
+      </a>
+
     </div>
   );
 }

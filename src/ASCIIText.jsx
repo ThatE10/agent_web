@@ -139,9 +139,8 @@ class AsciiFilter {
   }
 
   hue() {
-    const deg = (Math.atan2(this.dy, this.dx) * 180) / Math.PI;
-    this.deg += (deg - this.deg) * 0.075;
-    this.domElement.style.filter = `hue-rotate(${this.deg.toFixed(1)}deg)`;
+    const time = new Date().getTime() * 0.001;
+    this.domElement.style.filter = `hue-rotate(${(time * 30 % 360).toFixed(1)}deg)`;
   }
 
   asciify(ctx, w, h) {
@@ -357,11 +356,12 @@ class CanvAscii {
   }
 
   updateRotation() {
-    const x = Math.map(this.mouse.y, 0, this.height, 0.5, -0.5);
-    const y = Math.map(this.mouse.x, 0, this.width, -0.5, 0.5);
+    const time = new Date().getTime() * 0.001 * 0.5;
+    const targetX = Math.sin(time * 2.1) * 0.05;
+    const targetY = Math.cos(time * 1.7) * 0.05;
 
-    this.mesh.rotation.x += (x - this.mesh.rotation.x) * 0.05;
-    this.mesh.rotation.y += (y - this.mesh.rotation.y) * 0.05;
+    this.mesh.rotation.x += (targetX - this.mesh.rotation.x) * 0.05;
+    this.mesh.rotation.y += (targetY - this.mesh.rotation.y) * 0.05;
   }
 
   clear() {
