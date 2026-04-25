@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>The Spot – Hunting Party</title>
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
       --bg: #0d0d0f;
@@ -17,7 +24,8 @@
       --muted: #8e8e93;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       min-height: 100dvh;
       background: var(--bg);
@@ -51,7 +59,10 @@
       font-weight: 600;
       transition: opacity 0.15s;
     }
-    .header-back:hover { opacity: 0.7; }
+
+    .header-back:hover {
+      opacity: 0.7;
+    }
 
     .header-title {
       font-size: 1rem;
@@ -60,7 +71,9 @@
     }
 
     /* spacer to keep title centered */
-    .header-spacer { width: 60px; }
+    .header-spacer {
+      width: 60px;
+    }
 
     /* ── Page wrapper ────────────────────────── */
     main {
@@ -95,7 +108,7 @@
       overflow: hidden;
       background: #1c1c1e;
       border: 1px solid var(--border);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
       cursor: zoom-in;
     }
 
@@ -111,10 +124,18 @@
       display: block;
       transition: transform 0.4s ease;
     }
-    .photo-card:hover img { transform: scale(1.03); }
 
-    .photo-card.tall { height: 260px; }
-    .photo-card.short { height: 190px; }
+    .photo-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .photo-card.tall {
+      height: 260px;
+    }
+
+    .photo-card.short {
+      height: 190px;
+    }
 
     /* ── Glass card ──────────────────────────── */
     .glass-card {
@@ -124,7 +145,7 @@
       border: 1px solid var(--border);
       border-radius: 22px;
       padding: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
 
     /* ── Coords row ──────────────────────────── */
@@ -167,7 +188,7 @@
     }
 
     .copy-btn {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       border: none;
       color: var(--text);
       padding: 7px 14px;
@@ -178,8 +199,14 @@
       transition: background 0.18s;
       font-family: inherit;
     }
-    .copy-btn:hover { background: rgba(255,255,255,0.16); }
-    .copy-btn.copied { color: #32d74b; }
+
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .copy-btn.copied {
+      color: #32d74b;
+    }
 
     .divider {
       height: 1px;
@@ -198,7 +225,7 @@
     .info-icon {
       width: 34px;
       height: 34px;
-      background: rgba(255,255,255,0.07);
+      background: rgba(255, 255, 255, 0.07);
       border-radius: 9px;
       display: flex;
       align-items: center;
@@ -246,11 +273,15 @@
       border: 1px solid var(--border);
       transition: background 0.18s, transform 0.15s;
     }
+
     .map-btn:hover {
       background: #2c2c2e;
       transform: translateY(-1px);
     }
-    .map-btn:active { transform: translateY(0); }
+
+    .map-btn:active {
+      transform: translateY(0);
+    }
 
     /* ── RSVP banner ─────────────────────────── */
     .rsvp-banner {
@@ -258,7 +289,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      background: linear-gradient(135deg, rgba(255,97,136,0.18), rgba(252,152,103,0.14));
+      background: linear-gradient(135deg, rgba(255, 97, 136, 0.18), rgba(252, 152, 103, 0.14));
       border: 1px solid rgba(255, 97, 136, 0.25);
       border-radius: 20px;
       padding: 16px 20px;
@@ -268,6 +299,7 @@
       font-size: 1rem;
       font-weight: 700;
     }
+
     .rsvp-text p {
       font-size: 0.8rem;
       color: var(--muted);
@@ -288,7 +320,11 @@
       white-space: nowrap;
       transition: opacity 0.18s, transform 0.15s;
     }
-    .rsvp-link:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .rsvp-link:hover {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
 
     /* ── Lightbox ────────────────────────────── */
     #lightbox {
@@ -296,21 +332,26 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(0,0,0,0.92);
+      background: rgba(0, 0, 0, 0.92);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       align-items: center;
       justify-content: center;
       cursor: zoom-out;
     }
-    #lightbox.open { display: flex; }
+
+    #lightbox.open {
+      display: flex;
+    }
+
     #lightbox img {
       max-width: 94vw;
       max-height: 90dvh;
       border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
       object-fit: contain;
     }
+
     #lightbox-close {
       position: absolute;
       top: 20px;
@@ -318,7 +359,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.12);
       border: none;
       color: #fff;
       font-size: 1.2rem;
@@ -329,13 +370,15 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Header -->
   <header>
     <a class="header-back" href="index.html" id="back-btn">
-      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M7 1L1 7l6 6"/>
+      <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 1L1 7l6 6" />
       </svg>
       Back
     </a>
@@ -361,8 +404,8 @@
         </div>
         <!-- Second image -->
         <div class="photo-card short" id="card-img2" role="button" tabindex="0" aria-label="Open image 2"
-             style="grid-column: 1 / -1;">
-          <img src="image2.png" alt="The Spot – view 2" loading="lazy" />
+          style="grid-column: 1 / -1;">
+          <img src="image1.png" alt="The Spot – view 2" loading="lazy" />
         </div>
       </div>
     </section>
@@ -374,9 +417,10 @@
         <!-- Coordinates -->
         <div class="coords-block">
           <div class="coords-icon">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
           </div>
           <div class="coords-text">
@@ -391,9 +435,10 @@
         <!-- Info rows -->
         <div class="info-row">
           <div class="info-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
             </svg>
           </div>
           <div class="info-content">
@@ -406,9 +451,10 @@
 
         <div class="info-row">
           <div class="info-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
           </div>
           <div class="info-content">
@@ -422,16 +468,20 @@
         <!-- Map buttons -->
         <div class="map-buttons">
           <!-- Apple Maps -->
-          <a class="map-btn" href="https://maps.apple/p/wW0kJGs11ow3nm" target="_blank" rel="noopener noreferrer" id="apple-maps-btn">
+          <a class="map-btn" href="https://maps.apple/p/wW0kJGs11ow3nm" target="_blank" rel="noopener noreferrer"
+            id="apple-maps-btn">
             <svg width="16" height="16" viewBox="0 0 384 512" fill="currentColor">
-              <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.1-44.6-35.9-2.8-74.3 22.7-93.1 22.7-18.9 0-49.5-22.1-78.6-21.5-44.3 .7-84.8 25.8-107.6 66.1-46.8 82.5-12.2 205.1 33.1 270.8 22.1 32 49.3 67.2 84.7 66.2 33.6-1.1 46.1-21.4 86.8-21.4 40.5 0 52.4 21.4 87.2 20.8 35.5-.6 59.8-32.9 81.3-64.6 24.8-36.5 35-71.9 35.5-73.8-1.1-.3-81.1-30.8-82.6-103.8zM257.6 94.6c20.3-24.7 34.6-59.3 30.9-94.6-28.8 1.2-64.8 19.3-85.9 44.1-16.7 19.4-33.8 54.4-29.3 89.1 32.5 2.5 65.6-14 84.3-38.6z"/>
+              <path
+                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.1-44.6-35.9-2.8-74.3 22.7-93.1 22.7-18.9 0-49.5-22.1-78.6-21.5-44.3 .7-84.8 25.8-107.6 66.1-46.8 82.5-12.2 205.1 33.1 270.8 22.1 32 49.3 67.2 84.7 66.2 33.6-1.1 46.1-21.4 86.8-21.4 40.5 0 52.4 21.4 87.2 20.8 35.5-.6 59.8-32.9 81.3-64.6 24.8-36.5 35-71.9 35.5-73.8-1.1-.3-81.1-30.8-82.6-103.8zM257.6 94.6c20.3-24.7 34.6-59.3 30.9-94.6-28.8 1.2-64.8 19.3-85.9 44.1-16.7 19.4-33.8 54.4-29.3 89.1 32.5 2.5 65.6-14 84.3-38.6z" />
             </svg>
             Apple Maps
           </a>
           <!-- Google Maps -->
-          <a class="map-btn" href="https://maps.app.goo.gl/k6wt714py9BvRVhr9" target="_blank" rel="noopener noreferrer" id="google-maps-btn">
+          <a class="map-btn" href="https://maps.app.goo.gl/k6wt714py9BvRVhr9" target="_blank" rel="noopener noreferrer"
+            id="google-maps-btn">
             <svg width="16" height="16" viewBox="0 0 488 512" fill="currentColor">
-              <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+              <path
+                d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
             </svg>
             Google Maps
           </a>
@@ -447,7 +497,8 @@
           <h3>You coming?</h3>
           <p>Lock in your spot on Partiful</p>
         </div>
-        <a class="rsvp-link" href="https://partiful.com/e/aX7b9vls5ZJHSMLjoJQk" target="_blank" rel="noopener noreferrer" id="rsvp-btn">RSVP</a>
+        <a class="rsvp-link" href="https://partiful.com/e/aX7b9vls5ZJHSMLjoJQk" target="_blank"
+          rel="noopener noreferrer" id="rsvp-btn">RSVP</a>
       </div>
     </section>
 
@@ -455,9 +506,9 @@
 
   <script>
     // ── Lightbox ──────────────────────────────────────────────
-    const lightbox    = document.getElementById('lightbox');
+    const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn    = document.getElementById('lightbox-close');
+    const closeBtn = document.getElementById('lightbox-close');
 
     function openLightbox(src, alt) {
       lightboxImg.src = src;
@@ -477,7 +528,7 @@
       openLightbox('image2.png', 'The Spot – view 2'));
 
     // keyboard
-    ['card-img1','card-img2'].forEach(id => {
+    ['card-img1', 'card-img2'].forEach(id => {
       document.getElementById(id).addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') e.currentTarget.click();
       });
@@ -509,4 +560,5 @@
     });
   </script>
 </body>
+
 </html>
